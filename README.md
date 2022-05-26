@@ -1,3 +1,6 @@
+g++ filename.c -lGL -lGLU -lglut
+./a.out
+
 1) DDA Line::::::::::::::::::::::::
 
 #include<GL/glut.h>
