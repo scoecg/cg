@@ -215,7 +215,6 @@ glMatrixMode(GL_PROJECTION);
 glLoadIdentity();
 gluOrtho2D(0.0,640.0,0.0,480.0);
 }
-
 int main(int argc,char**argv){
 glutInit(&argc,argv);
 glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
@@ -256,7 +255,7 @@ glVertex2i(a, b);
 glEnd();
 glFlush();
 }
-#include<GL/glut.h>void DrawPolygon(int x, int y, int m, int n) {
+void DrawPolygon(int x, int y, int m, int n) {
 a = x; b = y;
 Dx = abs(m - x);
 Dy = abs(n - y);
