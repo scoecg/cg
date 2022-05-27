@@ -40,8 +40,7 @@ glClearColor(1.0,1.0,1.0,1.0);
 glMatrixMode(GL_PROJECTION);
 glLoadIdentity();
 gluOrtho2D(-100,100,-100,100);
-}
- 
+} 
 int main(int argc, char**argv){
 printf("enter the value of x1:");
 scanf("%f",&x1);
