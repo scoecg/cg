@@ -65,25 +65,31 @@ return 0;
 
 2) Bresenham's Line::::::::::::::::::::::::::
 
-#include<stdio.h>
-#include<stdlib.h>
 #include<GL/glut.h>
+#include<math.h>
+#include<stdlib.h>
+#include<iostream>
+#include<stdio.h>
+using namespace std;
 int sign(float arg)
 {
-if(arg<0) return -1;
-else if(arg==0) return 0;
-else return 1;
+if(arg<0)
+return -1;
+else if(arg==0)
+return 0;
+else
+return 1;
 }
-void Bre(int x1,int y1,int x2,int y2)
+void Bre(int X1,int Y1,int X2,int Y2)
 {
-float dx=abs(x2-x1);
-float dy=abs(y2-y2);
+float dx=abs(X2-X1);
+float dy=abs(Y2-Y1);
 int s1,s2,exc,y,x,i;
 float g,temp;
-x=x1;
-y=y1;
-s1=sign(x2-x1);
-s2=sign(y2-y1);
+x=X1;
+y=Y1;
+s1=sign(X2-X1);
+s2=sign(Y2-Y1);
 glBegin(GL_POINTS);
 if(dy>dx)
 {
@@ -101,63 +107,46 @@ i=1;
 while(i<=dx)
 {
 glVertex2d(x,y);
-while(g>0)
+while(g>=0)
 {
 if(exc==1)
-{
 x=x+s1;
-}
 else
-{
 y=y+s2;
-}
 g=g-2*dx;
 }
 if(exc==1)
-{
 y=y+s2;
-}
 else
-{
 x=x+s1;
 g=g+2*dy;
 i++;
-}
 }
 glEnd();
 glFlush();
 }
 void display()
-{
-int a1,a2,b1,b2;
-printf("Enter the value of a1: \n");
-scanf("%d",&a1);
-printf("Enter the value of a2: \n");
-scanf("%d",&a2);
-printf("Enter the value of b1: \n");
-scanf("%d",&b1);
-printf("Enter the value of b2: \n");
-scanf("%d",&b2);
-Bre(a1,a2,b1,b2);
+{Bre(40,40,200,200);
+Bre(250,4000,100,100);
 }
-void init()
+void myInit(void)
 {
 glClearColor(1.0,1.0,1.0,0.0);
 glColor3f(1,1,1);
-glPointSize(1);
+glPointSize(1.0);
 glMatrixMode(GL_PROJECTION);
 glLoadIdentity();
 gluOrtho2D(0.0,640.0,0.0,480.0);
 }
-int main(int argc,char** argv)
+int main(int argc,char **argv)
 {
 glutInit(&argc,argv);
-glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
+glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
 glutInitWindowSize(640,480);
 glutInitWindowPosition(100,150);
-glutCreateWindow("Bresenhm");
+glutCreateWindow("Bresenham Line ");
 glutDisplayFunc(display);
-init();
+myInit();
 glutMainLoop();
 return 0;
 }
